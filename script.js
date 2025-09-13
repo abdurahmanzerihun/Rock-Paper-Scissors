@@ -1,4 +1,4 @@
-//get random computer choice using 
+//get random computer choice 
 function getComputerChoice(){
 const max=3;
 const randomNumber=Math.floor(Math.random()*max)
