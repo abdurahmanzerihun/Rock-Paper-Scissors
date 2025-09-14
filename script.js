@@ -1,3 +1,5 @@
+let humanScore=0;
+let computerScore=0;
 //get random computer choice 
 function getComputerChoice(){
 const max=3;
