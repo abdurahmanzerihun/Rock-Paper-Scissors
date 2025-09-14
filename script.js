@@ -50,34 +50,43 @@ function playRound(humanSelection,computerSelection){
 if(humanSelection===computerSelection)
 {
         console.log("Draw");
+        
 }
 else if((humanSelection==="Rock")&&(computerSelection==="Scissor"))
 {
         console.log("You win! Rock beats Scissor  ");
+        humanScore++;
 }
+
 else if((humanSelection==="Rock")&&(computerSelection==="Paper"))
 {
         console.log("You lose! Paper beats Rock ");
+        computerScore++;
 }
 else if((humanSelection==="Paper")&&(computerSelection==="Rock"))
 {
         console.log("You win! Paper beats Rock ");
+        humanScore++;
 }
 else if((humanSelection==="Paper")&&(computerSelection==="Scissor"))
 {
         console.log("You lose! Scissor beats Paper ");
+        computerScore++;
 }
 else if((humanSelection==="Scissor")&&(computerSelection==="Rock"))
 {
         console.log("You lose! Rock beats Scissor ");
+        computerScore++;
 }
 else if((humanSelection==="Scissor")&&(computerSelection==="Paper"))
 {
         console.log("You win! Scissor beats Paper ");
+        humanScore++;
 }
 else{
-        console.log("Invalid Comparison")
+        console.log("Invalid Choice")
 }
+console.log(`Your Score:${humanScore} | Computer Score:${computerScore}`)
 }
 const humanSelection=getHumanChoice();
 const computerSelection=getComputerChoice();
