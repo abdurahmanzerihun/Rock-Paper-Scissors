@@ -1,5 +1,7 @@
 let humanScore=0;
 let computerScore=0;
+let roundNumber=1;
+let maxRound=5;
 //get random computer choice 
 function getComputerChoice(){
 const max=3;
@@ -16,12 +18,7 @@ else if(randomNumber===1){
         return "Scissor";
    //console.log("Scissor")     
   }   
-
-        
-
 }
-//getComputerChoice();
-
 //get human choice
 function getHumanChoice(){
 console.log("Enter a valid data between 1-3"); 
@@ -45,49 +42,52 @@ else {
       //  console.log("Invalid data")
 }
 }
-//getHumanChoice();
-function playRound(humanSelection,computerSelection){
+
+function playRound(){
+        const humanSelection=getHumanChoice();
+        const computerSelection=getComputerChoice();
 if(humanSelection===computerSelection)
 {
+        console.log(`Your choice: ${humanSelection} | Computer Choice:${computerSelection}`)
         console.log("Draw");
+        humanScore++;
+        computerScore++;
         
 }
-else if((humanSelection==="Rock")&&(computerSelection==="Scissor"))
+else if((humanSelection==="Rock")&&(computerSelection==="Scissor")||
+(humanSelection==="Scissor")&&(computerSelection==="Paper") ||
+(humanSelection==="Paper")&&(computerSelection==="Rock"))
 {
-        console.log("You win! Rock beats Scissor  ");
+         console.log(`Your choice: ${humanSelection} | Computer Choice:${computerSelection}`)
+        console.log(`You win! ${humanSelection} beats ${computerSelection}`);
         humanScore++;
 }
-
-else if((humanSelection==="Rock")&&(computerSelection==="Paper"))
-{
-        console.log("You lose! Paper beats Rock ");
-        computerScore++;
-}
-else if((humanSelection==="Paper")&&(computerSelection==="Rock"))
-{
-        console.log("You win! Paper beats Rock ");
-        humanScore++;
-}
-else if((humanSelection==="Paper")&&(computerSelection==="Scissor"))
-{
-        console.log("You lose! Scissor beats Paper ");
-        computerScore++;
-}
-else if((humanSelection==="Scissor")&&(computerSelection==="Rock"))
-{
-        console.log("You lose! Rock beats Scissor ");
-        computerScore++;
-}
-else if((humanSelection==="Scissor")&&(computerSelection==="Paper"))
-{
-        console.log("You win! Scissor beats Paper ");
-        humanScore++;
-}
+  
 else{
-        console.log("Invalid Choice")
+         console.log(`Your choice: ${humanSelection} | Computer Choice:${computerSelection}`)
+       console.log(`You lose ${computerSelection} beats ${humanSelection}`)
+       computerScore++;
 }
 console.log(`Your Score:${humanScore} | Computer Score:${computerScore}`)
 }
-const humanSelection=getHumanChoice();
-const computerSelection=getComputerChoice();
-playRound(humanSelection,computerSelection);
+
+function playGame(){
+  for(let i=0;i<5;i++ ){
+    
+        playRound();
+           
+         roundNumber++;   
+  }   
+  if(humanScore>computerScore)
+        {
+console.log("Overall:Congratulation! You won the game!") 
+ }
+ else if(computerScore>humanScore)
+        {
+                console.log("Overall:Sorry! You failed the game!")
+        } 
+        else{
+                console.log("Overall: It's a tie")
+        }
+}
+playGame();
