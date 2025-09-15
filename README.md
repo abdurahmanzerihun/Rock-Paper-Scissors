@@ -1,2 +1,2 @@
 # Rock-Paper-Scissors
-A simple game played in the console.
+A simple game played entirely in the console.
