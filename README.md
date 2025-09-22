@@ -1,2 +1,5 @@
 # Rock-Paper-Scissors
-A simple game played entirely in the console.
+How we play :
+-Rock beats Scissor
+-Paper beats Rock 
+-Scissor beats paper 

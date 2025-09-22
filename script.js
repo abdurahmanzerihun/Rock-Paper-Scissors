@@ -1,9 +1,23 @@
+let round=0;
+let maxRound=5;
+let humanSelections=document.querySelectorAll('.choices button');
+let gameResult=document.getElementById('gameResult');
 let humanScore=0;
 let computerScore=0;
-let roundNumber=1;
-let maxRound=5;
-//get random computer choice 
+let choiceResult=document.getElementById('choiceResult');
+let humanScoreV=document.getElementById('humanScore');
+let computerScoreV=document.getElementById('computerScore');
+let reset=document.getElementById('reset');
+let anounce=document.getElementById('anounce');
+
+humanSelections.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const humanSelection = e.target.id;
+        playRound(humanSelection);
+    });
+});
 function getComputerChoice(){
+ //get random computer choice 
 const max=3;
 const randomNumber=Math.floor(Math.random()*max)
 if(randomNumber===0){
@@ -17,36 +31,15 @@ else if(randomNumber===1){
         }   
 }
 
-function getHumanChoice(){
-console.log("Enter a valid data between 1-3"); 
-console.log( "1.Rock")    ;
-console.log( "2. Paper")   ;
-console.log( "3.Scissor") ;
- let choice=parseInt(prompt("Enter your choice:",''));
- if(choice===1){
-        return "Rock";
-       
- }
- else if(choice===2){
-        return "Paper";
-    
- }
- else if(choice===3){
-        return "Scissor";
-
-}
-
-}
-/*Here the two functions are called inside the playRound() 
- so that they are looped for the desired amount of time in the playGame()*/
-
-function playRound(){
-        const humanSelection=getHumanChoice();
+function playRound(humanSelection){
+        if(round>=maxRound){
+                return;
+        }
         const computerSelection=getComputerChoice();
 if(humanSelection===computerSelection)
 {
-        console.log(`Your choice: ${humanSelection} | Computer Choice:${computerSelection}`)
-        console.log("Draw");
+       choiceResult.textContent= `Your choice: ${humanSelection} | Computer Choice:${computerSelection}`
+       gameResult.textContent= `Round:${round+1} | Draw`;
         humanScore++;
         computerScore++;
         
@@ -55,8 +48,8 @@ else if((humanSelection==="Rock")&&(computerSelection==="Scissor")||
 (humanSelection==="Scissor")&&(computerSelection==="Paper") ||
 (humanSelection==="Paper")&&(computerSelection==="Rock"))
 {
-        console.log(`Your choice: ${humanSelection} | Computer Choice:${computerSelection}`)
-        console.log(`You win! ${humanSelection} beats ${computerSelection}`);
+       choiceResult.textContent=`Your choice: ${humanSelection} | Computer Choice:${computerSelection}`
+       gameResult.textContent=`Round:${round+1}| You win! ${humanSelection} beats ${computerSelection}`;
         humanScore++;
 }
   
@@ -64,34 +57,49 @@ else if ((computerSelection==="Rock")&&(humanSelection==="Scissor")||
 (computerSelection==="Scissor")&&(humanSelection==="Paper") ||
 (computerSelection==="Paper")&&(humanSelection==="Rock"))
 {
-        console.log(`Your choice: ${humanSelection} | Computer Choice:${computerSelection}`);
-        console.log(`You lose ${computerSelection} beats ${humanSelection}`);
+        choiceResult.textContent=`Your choice: ${humanSelection} | Computer Choice:${computerSelection}`;
+        gameResult.textContent=`Round:${round+1} | You lose! ${computerSelection} beats ${humanSelection}`;
         computerScore++;
 }
 else
 {
-        console.log("Invalid Choice");
+         gameResult.textContent="Invalid Choice";
 }
-        console.log(`Your Score:${humanScore} | Computer Score:${computerScore}`);
+      round++;
+        humanScoreV.textContent=`Your Score:${humanScore}`;
+        computerScoreV.textContent=`Computer Score:${computerScore}`;
+        if(round===maxRound){
+                anounceWinner();
+        }
 
 }
-function playGame(){
-  for(let i=0;i<5;i++ )
-        {
-        playRound();
-        roundNumber++;   
-         }   
+function anounceWinner(){
+  
   if(humanScore>computerScore)
         {
-        console.log("Overall:Congratulation! You won the game!") 
+        anounce.textContent="Congratulation! You won the game!"; 
+        anounce.style.color="green";
          }
  else if(computerScore>humanScore)
         {
-         console.log("Overall:Sorry! You failed the game!")
+        anounce.textContent="Sorry! You failed the game!";
+         anounce.style.color="red";
         } 
         else
         {
-        console.log("Overall: It's a tie")
+        anounce.textContent="It's a tie";
+         anounce.style.color="rgb(119, 119, 119) ";
         }
 }
-playGame();
+reset.addEventListener('click',(event)=>{
+        humanScore=0;
+        computerScore=0;
+        round=0;
+        anounce.textContent="";
+         humanScoreV.textContent=`Your Score:${humanScore}`;
+        computerScoreV.textContent=`Computer Score:${computerScore}`;
+         gameResult.textContent=`Round:${round}`;
+         choiceResult.textContent=`Choose your weapon !`;
+
+});
+
