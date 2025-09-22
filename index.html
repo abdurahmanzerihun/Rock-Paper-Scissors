@@ -2,35 +2,35 @@
 <html>
   <head>
     <title>Rock-Paper-Scissors</title>
+    <link href="style.css" rel="stylesheet">
   </head>
   <body>
-   
- <div class="gameContainer">
-  <h1>Rock Paper Scissor</h1>
-
-  
-    <h6 id="humanScore">Score</h6>
-    <h6 id="computerScore">Score</h6>
- 
-  
+   <div class=parentContainer>
+   <div class="gameContainer">
+<div>
+        <h1 id="title">Rock Paper Scissor</h1>
+   <button id=reset>Restart</button>
+  <div class="score">
+    <h5 id="humanScore">Your Score : 0</h5>
+    <h5 id="computerScore">Computer Score: 0</h5>
+  </div>
   <div class="choices">
     <button id="Rock">Rock </button>
     <button id="Paper">Paper </button>
      <button id="Scissor">Scissor </button>
      
-    </div> 
-    <button id=reset>Reset</button>
+  </div> 
 
-    <div class="result" >
-    <h4 id='choiceResult'>humanChoice | ComputerChoice</h2>
-    <h2 id="gameResult">gameResult</h2>
-    </div>
-   
-    <!-- <h3 id="gameWinner"></h3> -->
+  <div class="result" >
+    <h5 id='choiceResult'>Choose your weapon ! </h5>
+    <h5 id="gameResult">Play 5 rounds at a time !</h5>
+  </div>
 
-<h1 id="anounce"></h1>
-    
- </div>
-   <script src="script.js"></script>
+  <h2 id="anounce"></h2>   
+</div>
+   </div>
+      </div>
+  
+  <script src="script.js"></script>
 </body>
 </html>

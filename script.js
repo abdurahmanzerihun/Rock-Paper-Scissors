@@ -17,7 +17,7 @@ humanSelections.forEach(button => {
     });
 });
 function getComputerChoice(){
-        //get random computer choice 
+ //get random computer choice 
 const max=3;
 const randomNumber=Math.floor(Math.random()*max)
 if(randomNumber===0){
@@ -58,7 +58,7 @@ else if ((computerSelection==="Rock")&&(humanSelection==="Scissor")||
 (computerSelection==="Paper")&&(humanSelection==="Rock"))
 {
         choiceResult.textContent=`Your choice: ${humanSelection} | Computer Choice:${computerSelection}`;
-        gameResult.textContent=`Round:${round+1} | You lose ${computerSelection} beats ${humanSelection}`;
+        gameResult.textContent=`Round:${round+1} | You lose! ${computerSelection} beats ${humanSelection}`;
         computerScore++;
 }
 else
@@ -77,24 +77,29 @@ function anounceWinner(){
   
   if(humanScore>computerScore)
         {
-        anounce.textContent="Overall:Congratulation! You won the game!"; 
+        anounce.textContent="Congratulation! You won the game!"; 
+        anounce.style.color="green";
          }
  else if(computerScore>humanScore)
         {
-        anounce.textContent="Overall:Sorry! You failed the game!";
+        anounce.textContent="Sorry! You failed the game!";
+         anounce.style.color="red";
         } 
         else
         {
-        anounce.textContent="Overall: It's a tie";
+        anounce.textContent="It's a tie";
+         anounce.style.color="rgb(119, 119, 119) ";
         }
 }
 reset.addEventListener('click',(event)=>{
         humanScore=0;
         computerScore=0;
         round=0;
+        anounce.textContent="";
          humanScoreV.textContent=`Your Score:${humanScore}`;
         computerScoreV.textContent=`Computer Score:${computerScore}`;
          gameResult.textContent=`Round:${round}`;
+         choiceResult.textContent=`Choose your weapon !`;
 
 });
 
