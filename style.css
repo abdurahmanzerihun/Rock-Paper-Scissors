@@ -1,15 +1,11 @@
 body{
-      
+    display: flex;
+        align-items: center;
+        justify-content: center;     
 }
 #title{
         color: brown;
         font-weight: bold;
-}
-.parentContainer{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
 }
 .score{
         display: flex;
@@ -20,6 +16,7 @@ body{
         background-color:rgb(207, 247, 247);
         padding: 40px;
         border-radius: 12px;
+        
 }
 .choices button{
         background-color:aliceblue;
@@ -42,4 +39,12 @@ body{
 }
 .result h5{
         color: brown;
+}
+@media (max-width:768px) {
+        .gameContainer{
+        width: 90%;
+        height: 560px;
+        max-width: 960px;
+        margin: 0 auto ;
+        }
 }
